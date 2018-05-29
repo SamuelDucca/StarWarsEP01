@@ -1,0 +1,74 @@
+ -====-    EXERCÍCIO PROGRAMA 01   ---   STAR WARS    -====-
+
+ Trabalho para a disciplina MAC0321
+ Escola Politécnica da Universidade de São Paulo
+ Feito por Samuel Ducca, NUSP 9833169
+
+
+ ------     DESCRIÇÃO     ------
+
+ O exercício contém duas parte: a primeira consiste em modelar diversos elementos do
+universo de Star Wars em classes com métodos get/set, e a segunda envolve simular um
+duelo entre um Mestre Jedi e um Lorde Sith.
+ Dado que a execução dos métodos get/set da primeira parte é trivial, as instruções 
+seguintes são destinadas ao simulador de duelos.
+
+
+ ------     METODOLOGIA     ------
+
+ Ademais das informações já fornecidas no enunciado do exercício, cabe dar mais alguns
+esclarecimentos:
+
+ 1) Apesar de ser largamente independente das classes do Ex1, as classes DuelistaJedi e 
+DuelistaSIth usadas pelo simulador do Ex2 são subclasses da classe Ser do Ex1. Logo, é possível 
+adicionar e visualizar informações extras como data de nascimento e planeta natal através delas.
+
+ 2) O combate é dividido em rounds. No começo de cada round é sorteada uma habilidade a
+ser usada por cada um dos duelistas, e é executada primeiro a ação que tem mais prioridade
+(menor valor).
+
+ 3) Além da prioridade por tipo de ação (esquivar > ataque força > ataque sabre), eu
+implementei uma prioridade interna para cada tipo de ataque. Assim, habilidades do mesmo tipo
+podem também ser executadas em ordem de prioridade. Ex: um ataque de sabre que dá menos dano
+será executado antes que um que dá mais dano, por questões de balanceamento.
+
+ 4) Se os dois duelistas executarem exatamente a mesma habilidade (mesmo tipo e prioridade),
+haverá um impasse e nenhum dos dois tomará dano. É como se as habilidades se anulassem e
+eles estivessem naquele momento tenso em que ninguém tem a vantagem.
+
+ 5) Os Sith tem uma habilidade extra com a Força, e os Jedi tem uma extra com o Sabre. Isso foi
+colocado para diferenciar um pouco os dois e deixar o balanceamento mais interessante.
+
+ 6) O dano base de ataques com a Força é bem menor do que os ataques de Sabre, mas seu dano total depende 
+diretamente da quantidade de midichlorians e da porcentagem de paz interna/raiva (que fica entre 0 e 1) 
+do duelista - podendo ficar várias vezes maior ou menor que o dano inicial. O dano total dos ataques com o 
+Sabre depende do Domínio com o Sabre do duelista (multiplicador da ataque base).
+ O balanceamento está longe de ser perfeito, mas eu achei bacana dar mais peso aos ataques de quem
+é poderoso com a Força :) 
+
+
+ ------     INSTRUÇÕES DO SIMULADOR     ------
+
+1) Crie um objeto da classe DuelistaJedi e DuelistaSith
+
+2) Forneça as informações necessárias pelos métodos set. Por exemplo:
+
+		player1.setNome("Anakin Skywalker");
+		player1.setMidichlorians(27000);
+		player1.setRaiva(1); //ou setPazInterior, se fosse jedi
+		player1.setDominioSabre(1);
+		player1.setDominioForca(); //metodo automático de calcular o dominio da força
+
+OBS: Essas são as informações mínimas a serem fornecidas para o correto funcionamento do simulador.
+Você também pode mudar a quantidade de vida e o domínio da força manualmente, se quiser.
+
+3) Crie um objeto da classe Batalha, fornecendo os dois duelistas no construtor
+
+4) Use o método .lutar() para que a batalha seja simulada!
+
+PS: É fornecida uma classe Teste que contém uma batalha já pronta para uso no método main.
+
+
+
+
+
